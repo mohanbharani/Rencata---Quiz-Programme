@@ -1,0 +1,23 @@
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\Rencata - Quiz Programme.exe.config
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\Rencata - Quiz Programme.exe
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\Rencata - Quiz Programme.pdb
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.AssemblyReference.cache
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.SuggestedBindingRedirects.cache
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.Properties.Resources.resources
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.GenerateResource.cache
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.CoreCompileInputs.cache
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.CopyComplete
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.exe
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.pdb
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.QuizProgramme.resources
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.Form1.resources
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.FileUpload.resources
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.MemberControl.resources
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Interop.WMPLib.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.ResolveComReference.cache
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Interop.MediaPlayer.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\Interop.WMPLib.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\AxInterop.WMPLib.dll
