@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuizProgramme));
             this.Back = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.Check = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnPause = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnPause = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.CountedQ = new System.Windows.Forms.Label();
             this.lblshowanswer = new System.Windows.Forms.Label();
@@ -49,13 +50,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnResume = new System.Windows.Forms.Button();
             this.btnVolumeDec = new System.Windows.Forms.Button();
             this.btnVolumneInc = new System.Windows.Forms.Button();
+            this.timerProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -114,16 +117,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1382, 723);
             this.flowLayoutPanel1.TabIndex = 8;
             // 
-            // btnPause
-            // 
-            this.btnPause.Location = new System.Drawing.Point(1149, 7);
-            this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(75, 23);
-            this.btnPause.TabIndex = 37;
-            this.btnPause.Text = "Pause";
-            this.btnPause.UseVisualStyleBackColor = true;
-            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -145,6 +138,16 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Choose the answer :";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnPause
+            // 
+            this.btnPause.Location = new System.Drawing.Point(1149, 7);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(75, 23);
+            this.btnPause.TabIndex = 37;
+            this.btnPause.Text = "Pause";
+            this.btnPause.UseVisualStyleBackColor = true;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
             // label2
             // 
@@ -272,16 +275,6 @@
             this.flowLayoutPanel3.Size = new System.Drawing.Size(389, 720);
             this.flowLayoutPanel3.TabIndex = 0;
             // 
-            // axWindowsMediaPlayer1
-            // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(57, 7);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(243, 48);
-            this.axWindowsMediaPlayer1.TabIndex = 31;
-            this.axWindowsMediaPlayer1.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
-            // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
@@ -341,11 +334,57 @@
             this.btnVolumneInc.Text = "IV";
             this.btnVolumneInc.UseVisualStyleBackColor = true;
             // 
+            // timerProgressBar
+            // 
+            this.timerProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.timerProgressBar.AnimationSpeed = 500;
+            this.timerProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.timerProgressBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.timerProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.timerProgressBar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(96)))), ((int)(((byte)(189)))));
+            this.timerProgressBar.InnerMargin = 2;
+            this.timerProgressBar.InnerWidth = -1;
+            this.timerProgressBar.Location = new System.Drawing.Point(889, 4);
+            this.timerProgressBar.MarqueeAnimationSpeed = 20000;
+            this.timerProgressBar.Name = "timerProgressBar";
+            this.timerProgressBar.OuterColor = System.Drawing.Color.Transparent;
+            this.timerProgressBar.OuterMargin = 0;
+            this.timerProgressBar.OuterWidth = 1;
+            this.timerProgressBar.ProgressColor = System.Drawing.Color.Navy;
+            this.timerProgressBar.ProgressWidth = 8;
+            this.timerProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.timerProgressBar.Size = new System.Drawing.Size(65, 60);
+            this.timerProgressBar.StartAngle = 270;
+            this.timerProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.timerProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.timerProgressBar.SubscriptText = "";
+            this.timerProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.timerProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.timerProgressBar.SuperscriptText = "";
+            this.timerProgressBar.TabIndex = 38;
+            this.timerProgressBar.TextMargin = new System.Windows.Forms.Padding(2, 3, 2, 0);
+            this.timerProgressBar.Value = 68;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(57, 7);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(243, 48);
+            this.axWindowsMediaPlayer1.TabIndex = 31;
+            this.axWindowsMediaPlayer1.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
+            // 
             // QuizProgramme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1805, 886);
+            this.Controls.Add(this.timerProgressBar);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnVolumneInc);
             this.Controls.Add(this.btnVolumeDec);
@@ -410,6 +449,8 @@
         private System.Windows.Forms.Button btnVolumeDec;
         private System.Windows.Forms.Button btnVolumneInc;
         private System.Windows.Forms.Button btnPause;
+        private CircularProgressBar.CircularProgressBar timerProgressBar;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
