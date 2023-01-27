@@ -17,6 +17,7 @@ namespace Rencata.Quiz.Programme
         public Form1()
         {
             InitializeComponent();
+            //comments
         }
 
         private void Form1_Load(object sender, EventArgs e)
