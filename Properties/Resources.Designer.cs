@@ -203,6 +203,16 @@ namespace Rencata.Quiz.Programme.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MicrosoftTeams_image__8_ {
+            get {
+                object obj = ResourceManager.GetObject("MicrosoftTeams-image (8)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap music_off_bg_black {
             get {
                 object obj = ResourceManager.GetObject("music-off-bg-black", resourceCulture);

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,6 +120,54 @@ namespace Rencata.Quiz.Programme
             form.ShowDialog();
             this.Close();
             Application.Exit();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = @"C:\";
+            saveFileDialog1.Title = "Save Final Result";
+            saveFileDialog1.DefaultExt = "txt";
+            saveFileDialog1.Filter = "CSV files (*.csv)|*.csv";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ExportToCSV(saveFileDialog1.FileName);
+            }
+
+
+        }
+
+        public void ExportToCSV(string fileName)
+        {
+            var lines = new List<string>();
+            var result = Participants.OrderByDescending(item => item.OverallScore).ToList();
+            string[] columnNames = new string[] { "S.No", "Name", "Correct Answers", "Total Question", "Score" };
+            var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
+            lines.Add(header);
+
+            string row = "";
+            int index = 0;
+            foreach (var score in result)
+            {
+
+                if (score.Answer != null && score.Answer.Count > 0)
+                {
+                    var cntAnswer = score.Answer.Where(x => x.isCorrect == true).ToList().Count;
+                    row = string.Format("{0},{1},{2},{3},{4}", ++index, score.Name, cntAnswer, score.Answer.Count, cntAnswer);
+                    //      var valueLines = string.Join("{0},", row.ItemArray.Select(val => $"\"{val}\""));
+                }
+                else
+                {
+                    score.OverallScore = score.Answer.Where(x => x.isCorrect == true).Count();
+                    row = string.Format("{0},{1},{2},{3},{4}", ++index, score.Name, 0, 0, 0);
+                }
+                lines.Add(row);
+            }
+
+            File.WriteAllLines(string.Format("{0}", fileName), lines);
+
         }
     }
 }
