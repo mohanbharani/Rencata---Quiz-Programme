@@ -11,9 +11,7 @@ C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Renc
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.CopyComplete
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.exe
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.pdb
-C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.QuizProgramme.resources
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.Form1.resources
-C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.FileUpload.resources
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.MemberControl.resources
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Interop.WMPLib.dll
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.ResolveComReference.cache
@@ -21,3 +19,17 @@ C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Inte
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\Interop.WMPLib.dll
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.FileUpload.resources
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\System.Security.AccessControl.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\System.Security.Permissions.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\System.Security.AccessControl.xml
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\System.Security.Permissions.xml
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\CircularProgressBar.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\WinFormAnimation.dll
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\CircularProgressBar.xml
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.StartTest.resources
+C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.FinalScore.resources

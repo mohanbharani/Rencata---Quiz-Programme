@@ -53,8 +53,8 @@ namespace Rencata.Quiz.Programme
                 Test();
                 axWindowsMediaPlayer1.Visible = false;
                 panel1.Visible = false;
-                string Json = System.IO.File.ReadAllText(@"c:\Users\Bharanikumar.Eswar\qamodel.json");
-                string team = System.IO.File.ReadAllText(@"c:\Users\Bharanikumar.Eswar\Teamandmember.json");
+                string Json = System.IO.File.ReadAllText(@"C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\asssets\qamodel.json");
+                string team = System.IO.File.ReadAllText(@"C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\asssets\Teamandmember.json");
                 quiz = JsonConvert.DeserializeObject<Quiz>(Json);
                 teamsandMembers = JsonConvert.DeserializeObject<List<Teams>>(team);
                 axWindowsMediaPlayer1.settings.autoStart = true;
@@ -532,7 +532,9 @@ namespace Rencata.Quiz.Programme
         private void btnPlay_Click(object sender, EventArgs e)
         {
             axWindowsMediaPlayer1.Visible = false;
-            axWindowsMediaPlayer1.URL = @"C:\\Users\\Bharanikumar.Eswar\\watr-fluid-10149.mp3";
+
+            //axWindowsMediaPlayer1.URL = @"C:\Windows\Media\alaram05.wav";
+            axWindowsMediaPlayer1.URL = @"C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\asssets\watr-fluid-10149.mp3";
             axWindowsMediaPlayer1.settings.setMode("loop", true);
             axWindowsMediaPlayer1.Ctlcontrols.play();
             btnPlay.Enabled = false;
@@ -564,6 +566,23 @@ namespace Rencata.Quiz.Programme
             btnPause.Enabled = false;
             btnResume.Enabled = true;
             axWindowsMediaPlayer1.Ctlcontrols.pause();
+        }
+
+        private void axWindowsMediaPlayer2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            pictureBox2.Enabled  = false;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.URL = @"C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\asssets\watr-fluid-10149.mp3";
+            axWindowsMediaPlayer1.settings.setMode("loop", true);
+            axWindowsMediaPlayer1.Ctlcontrols.play();
         }
 
 
