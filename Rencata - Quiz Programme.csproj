@@ -186,6 +186,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ModelQuestion.json" />
     <None Include="Resources\MicrosoftTeams-image.png" />
   </ItemGroup>
   <ItemGroup>
