@@ -53,6 +53,7 @@ namespace Rencata.Quiz.Programme
         }
         private void FileUpload_Load(object sender, EventArgs e)
         {
+            btnBrowse.Focus();
             //RetrieveSavedData();
             btnNext.Enabled = false;
         }
@@ -95,6 +96,11 @@ namespace Rencata.Quiz.Programme
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
+            BrowseQuestionFile();
+        }
+
+        private void BrowseQuestionFile()
+        {
             OpenFileDialog openFileDialog2 = new OpenFileDialog();
             openFileDialog2.Filter = "JSON Files (*.json)|*.json";
             openFileDialog2.Title = "Select file";
@@ -109,6 +115,7 @@ namespace Rencata.Quiz.Programme
                 }
             }
         }
+
         public class FileUploadDataEventArgs : EventArgs
         {
             public string Data { get; set; }
