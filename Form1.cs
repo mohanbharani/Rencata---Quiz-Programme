@@ -669,7 +669,7 @@ namespace Rencata.Quiz.Programme
 
         private void initQuiz()
         {
-            lblRounds.Text = String.Format("Round: {0}/{1} :: participant: {2}/{3} :: Question: {4}/{5}", round, TotalRound, participant, Totalparticipant, question, eachRound);
+            lblRounds.Text = String.Format("Round: {0}/{1}", round, TotalRound);
 
             if (!isQuizComplete)
             {
@@ -708,7 +708,7 @@ namespace Rencata.Quiz.Programme
         {
             if (!isQuizComplete || isback)
             {
-                lblRounds.Text = String.Format("Round: {0}/{1} :: participant: {2}/{3} :: Question: {4}/{5}", round, TotalRound, participant, Totalparticipant, question, eachRound);
+                lblRounds.Text = String.Format("Round: {0}/{1}", round, TotalRound);
                 nextQuestion();
                 btnPreviouc.Enabled = true;
                 if (isQuizComplete && !isback)
