@@ -26,14 +26,11 @@ namespace Rencata.Quiz.Programme
         private Bitmap _playBitmap;
         private int _currentSong = 0;
         private bool _isPlaying = true;
-        private List<string> songs;
+        private List<string> songs = new List<string>();
 
         private Random random = new Random();
         private QuizQuestions quiz;
         private List<QuizDetails> quizDetail = new List<QuizDetails>();
-        //private Participants participants = new Participants();
-        
-
 
         private string right = "\u2714";
         private string wrong = "\u274C";
@@ -51,56 +48,38 @@ namespace Rencata.Quiz.Programme
 
         
         string quizFile = "";
-        //FileUpload fileUpload = new FileUpload();
         StartTest startTest = new StartTest();
-
-        
         bool isQuizComplete = false;
-
-        private int secondsToWait = Convert.ToInt32(ConfigurationManager.AppSettings["secondsToWait"]);
-        private string bgMusic = ConfigurationManager.AppSettings["music"];
+        private int secondsToWait = 5;
         private DateTime startTime;
-
-
-        //Find QuizDetails and question using ID
         private bool isApplicationExit = false;
         private string saveFolderName = "quiz";
         private string saveFileName = "quizData.json";
         bool isClose = false;
         public bool isSubmit = false;
-
-
-
         public List<Participants> lstParticipant = new List<Participants>();
         public QuizConfiguration quizConfig = new QuizConfiguration();
-        private bool _playMusic = false;
+        private bool loadPreviousQuiz = false;
         private static readonly object _lock = new object();
         private int TimeOutShowAnswerMusic = ConfigurationManager.AppSettings["TimeOutShowAnswerMusic"] == null ? 5000 : Convert.ToInt32(ConfigurationManager.AppSettings["TimeOutShowAnswerMusic"]);
         private string ShowAnswerMusic = ConfigurationManager.AppSettings["ShowAnswerMusic"] == null ? @"C:\\Windows\\Media\\Ring02.wav" : ConfigurationManager.AppSettings["ShowAnswerMusic"];
+
+        private string CorrectAnswerMusic = ConfigurationManager.AppSettings["CorrectAnswerMusic"];
+        private string WrongAnswerMusic = ConfigurationManager.AppSettings["WrongAnswerMusic"];
         public Form1()
         {
             InitializeComponent();
-            //label2.Font = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Italic);
-            //label2.ForeColor = Color.White;
             _playBitmap = global::Rencata.Quiz.Programme.Properties.Resources.pause_button_25;
-            btnPreviouc.Enabled = false;
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //quizFile = System.IO.File.ReadAllText(@"c:\Users\Bharanikumar.Eswar\qamodel.json");
-            //quiz = JsonConvert.DeserializeObject<QuizQuestion>(quizFile);
-            //string team = System.IO.File.ReadAllText(@"c:\Users\Bharanikumar.Eswar\Teamandmember.json");
-
-            //participants = JsonConvert.DeserializeObject<List<Participants>>(team);
-
             if (string.IsNullOrWhiteSpace(quizFile))
             {
                 OpenStartTestForm();
                 if (!isApplicationExit)
                 {
-                    //if (quiz == null || participants.Members == null)
-                    
                     if (quiz == null || lstParticipant == null || lstParticipant.Count == 0)
                     {
                         isClose = true;
@@ -108,39 +87,22 @@ namespace Rencata.Quiz.Programme
                     }
                     else
                     {
-                        //RetrieveSavedData();
-                        GenerateTeamControl();
-                        
-                        initQuiz();
-
-                        axWindowsMediaPlayer1.Visible = false;
-                        songs = new List<string>();
-                        string[] musci = bgMusic.Split(',');
-                        if (musci.Length > 0)
+                        int Totalquestions = TotalRound * Totalparticipant * eachRound;
+                        if (!loadPreviousQuiz && quizDetail.Count >= Totalquestions)
                         {
-                            foreach (var song in musci)
-                            {
-                                if (!string.IsNullOrWhiteSpace(song))
-                                    songs.Add(song);
-                            }
-                                
+                            _ = Submit();
                         }
-                        //var backgroundMusicManager = ConfigurationManager.GetSection("BackgroundMusicManager") as NameValueCollection;
-                        //songs = new List<string>();
-                        //if (backgroundMusicManager != null)
-                        //{
-                        //    foreach (var serverKey in backgroundMusicManager.AllKeys)
-                        //    {
-                        //        string serverValue = backgroundMusicManager.GetValues(serverKey).FirstOrDefault();
-                        //        songs.Add(serverValue);
-                        //    }
-                        //}
-                        //songs = new List<string>()
-                        //    {
-                        //        @"C:\Users\Bharanikumar.Eswar\Downloads\wemida-heartbeat-voting-quizzing-voting-background-music-16574.mp3",
-                        //            @"C:\Users\Bharanikumar.Eswar\Downloads\bella-ciao-guitar-ahmadmousavipour-11996.mp3"
-                        //    };
-                        PlayMusic();
+                        else
+                        {
+                            GenerateTeamControl();
+
+                            initQuiz();
+                            btnPreviouc.Enabled = false;
+                            if (quizDetail.Count > 0)
+                                btnPreviouc.Enabled = true;
+                            axWindowsMediaPlayer1.Visible = false;
+                            PlayMusic();
+                        }
                     }
                     Answer answer = new Answer() { Answered = new List<string>() };
                 }
@@ -152,14 +114,6 @@ namespace Rencata.Quiz.Programme
         }
         private async void RetrieveSavedData()
         {
-            var quizFile = System.IO.File.ReadAllText(String.Format("{0}/{1}/{2}", Application.StartupPath, "quiz", "quizData.json"));
-            var lstParticipant = JsonConvert.DeserializeObject<List<Participants>>(quizFile);
-
-            var quizconfigFile = System.IO.File.ReadAllText(String.Format("{0}/{1}/{2}", Application.StartupPath, "quiz", "quizConfiguration.json"));
-            var quizConfig = JsonConvert.DeserializeObject<QuizConfiguration>(quizconfigFile);
-
-            quizDetail = new List<QuizDetails>();
-
             int currentParticipant = 1;
             int currentRound = 1;
             int currentQuestion = 1;
@@ -168,7 +122,7 @@ namespace Rencata.Quiz.Programme
             int Totalparticipant = quizConfig.TotalParticipant;
             int eachRound = quizConfig.QuestioninEachRound;
 
-            var quizDetails = lstParticipant.SelectMany((cPar, i) =>
+            var quizAns = lstParticipant.SelectMany((cPar, i) =>
                                                         cPar.Answer
                                                             .Where(cRoun => cRoun != null)
                                                             .Select((cRoun, k) => new
@@ -178,39 +132,50 @@ namespace Rencata.Quiz.Programme
                                                                 isShowedAnswer = cRoun.isShowedAnswer,
                                                                 cRound = (k / eachRound) + 1,
                                                                 cParticipant = i + 1,
-                                                                cQuestion = k + 1
-                                                            })).ToList();
+                                                                cQuestion = (k % eachRound) + 1
+                                                            })).OrderBy(a => a.cRound).ToList();
 
-            foreach (var participant in quizDetails)
+            foreach (var particpant in quizAns)
             {
-                quizDetail.Add(new QuizDetails() { Id = participant.Id, QuestionId = participant.QuestionId, isShowedAnswer = participant.isShowedAnswer });
-                currentParticipant = participant.cParticipant;
-                currentQuestion = participant.cQuestion / eachRound;
-                currentRound = participant.cRound;
+                quizDetail.Add(new QuizDetails() { Id = particpant.Id, QuestionId = particpant.QuestionId, isShowedAnswer = particpant.isShowedAnswer });
 
+                var quizQuestion = quiz.Questions.Where(x => x.id == particpant.QuestionId).FirstOrDefault();
+                quizQuestion.Answered = particpant.isShowedAnswer ? true : false;
             }
-
-            if(quizDetail.Count > 1)
+            
+            var lastParticipant = quizAns.LastOrDefault(); // last answered
+            if (quizDetail.Count > 0 && !lastParticipant.isShowedAnswer)
+                loadPreviousQuiz = true;
+            if (lastParticipant != null)
             {
-                btnPreviouc.Enabled = true;
+                currentParticipant = lastParticipant.cParticipant;
+                currentQuestion = lastParticipant.cQuestion;
+                currentRound = lastParticipant.cRound;
+
+                if (lastParticipant.isShowedAnswer)
+                {
+                    if (currentParticipant == Totalparticipant && currentQuestion % eachRound == 0)
+                    {
+                        currentQuestion = 1;
+                        currentRound = currentRound + 1;
+                        currentParticipant = 1;
+                    }
+                    else if (currentQuestion % eachRound == 0)
+                    {
+                        currentQuestion = 1;
+                        currentParticipant = currentParticipant + 1;
+                    }
+                    else
+                    {
+                        ++currentQuestion;
+                    }
+                }
             }
-
-
-
 
             round = currentRound;
-            question = currentQuestion == 0 ? 1 : currentQuestion;
             participant = currentParticipant;
-            if (currentQuestion == 0)
-            {
-                round = currentRound + 1;
-                participant = 1;
-            }
-
-            //r1 u2 e2
-            
+            question = currentQuestion;
         }
-
         private void startTest_Data(object sender, StartTestDataEventArgs e)
         {
             isApplicationExit = e.isClose;
@@ -228,17 +193,20 @@ namespace Rencata.Quiz.Programme
                     
                 }
 
+                quizConfig = e.quizConfiguration;
+                TotalRound = quizConfig.TotalRound;
+                Totalparticipant = quizConfig.TotalParticipant;
+                eachRound = quizConfig.QuestioninEachRound;
+                songs = quizConfig.BackgroundMusic;
+                secondsToWait = quizConfig.Timer;
+
                 if (e.lstParticipants != null)
                 {
                     //participants = e.participants;
                     lstParticipant = e.lstParticipants;
                     //Totalparticipant = participants.Members.Count;
-                    //RetrieveSavedData();
+                    RetrieveSavedData();
                 }
-                quizConfig = e.quizConfiguration;
-                TotalRound = quizConfig.TotalRound;
-                Totalparticipant = quizConfig.TotalParticipant;
-                eachRound = quizConfig.QuestioninEachRound;
             }
         }
 
@@ -333,32 +301,48 @@ namespace Rencata.Quiz.Programme
             try
             {
                 RemoveControls("option");
-                index = random.Next(0, quiz.Questions.Count);
-                var question = quiz.Questions[index];
+                QuizQuestion question = null;
+                Answer answer = null;
+                if (loadPreviousQuiz)
+                {
+                    var lastQuestion = quizDetail.LastOrDefault();
+                    if (loadPreviousQuiz && lastQuestion != null && !lastQuestion.isShowedAnswer)
+                    {
+                        question = quiz.Questions.Where(x => x.id == lastQuestion.QuestionId).FirstOrDefault();
+                    }
+                    
+                }
+
+                if(question == null)
+                {
+                    index = random.Next(0, quiz.Questions.Count);
+                    question = quiz.Questions[index];
+                    answer = GetAlreadyAskedQuestion(question.id);
+                }
+                //var notAnsweredQuestion = quiz.Questions.Where(x => x.Answered == false).ToList();
                 richTextBox1.Text = question.Question;
                 if (quizDetail.Count < quiz.Questions.Count)
                 {
-                    Answer answer = GetAlreadyAskedQuestion(question.id);
                     if (answer ==  null)
                     {
                         btnNext.Enabled = false;
                         btnShowAnswer.Enabled = true;
                         Timer_Start();
-
-                        //lstParticipant[participantIndex].Answer[0].QuestionId = question.id;
-                        lstParticipant[participantIndex - 1].Answer.Add(
+                        if(!loadPreviousQuiz)
+                        {
+                            lstParticipant[participantIndex - 1].Answer.Add(
                             new Answer()
                             {
                                 QuestionId = question.id
                             });
-                        quizDetail.Add(
-                            new QuizDetails()
-                            {
-                                QuestionId = question.id,
-                                //ParticipantName = lstParticipant[participantIndex - 1].Name,
-                                Id = lstParticipant[participantIndex - 1].Id
-                                //,isAssigned = true
-                            });
+                            quizDetail.Add(new QuizDetails()
+                                {
+                                    QuestionId = question.id,
+                                    Id = lstParticipant[participantIndex - 1].Id
+                                });
+                            
+                        }
+                        loadPreviousQuiz = false;
                         GenerateControl(question);
 
                         HighlightParticipant(participantIndex - 1);
@@ -790,10 +774,8 @@ namespace Rencata.Quiz.Programme
             var list = lstParticipant;
             foreach(var result in lstParticipant)
             {
-                foreach(var answer in result.Answer)
-                {
-                    result.OverallScore = answer.isCorrect ? (result.OverallScore + 1) : result.OverallScore;
-                }
+                if (result.Answer != null && result.Answer.Count > 0)
+                    result.OverallScore = result.Answer.Where(x => x.isCorrect == true).Count();
             }
 
             FinalScore fs = new FinalScore();
@@ -834,6 +816,8 @@ namespace Rencata.Quiz.Programme
             bool isPaused = false;
             bool? isAnswered;
             var question = GetCurrentQuestion(); //quiz.QuizQuestion[index];
+            bool isPrevious = btnPreviouc.Enabled;
+            
             if (string.Compare(question.Type, "C", StringComparison.OrdinalIgnoreCase) == 0)
             {
                 isAnswered = flowLayoutPanel1.Controls.OfType<CheckBox>().Where(c => c.Checked).ToList().Count > 0;
@@ -848,6 +832,7 @@ namespace Rencata.Quiz.Programme
             }
             else
             {
+                btnPreviouc.Enabled = false;
                 using (SoundPlayer player = new SoundPlayer(ShowAnswerMusic))
                 {
                     if (axWindowsMediaPlayer1.playState == WMPPlayState.wmppsPlaying)
@@ -858,23 +843,30 @@ namespace Rencata.Quiz.Programme
                     btnShowAnswer.Enabled = false;
                     //btnPreviouc.Enabled = false;
                     player.Play();
-                    Thread.Sleep(TimeOutShowAnswerMusic);  // Delay the thread for 5 seconds (5000 milliseconds)
+                    Thread.Sleep(TimeOutShowAnswerMusic);
+                    player.Stop();// Delay the thread for 5 seconds (5000 milliseconds)
                 }
-                if (isPaused && axWindowsMediaPlayer1.playState == WMPPlayState.wmppsPaused)
-                    axWindowsMediaPlayer1.Ctlcontrols.play();
-
-
+                
                 if (isAnswered.HasValue && isAnswered.Value)
                 {
                     RemoveControls("option");
                     var answer = GetAlreadyAskedQuestion(question.id);
+
+                    string music = answer.isCorrect ? CorrectAnswerMusic : WrongAnswerMusic;
+                    CongratsMusic(music);
+
                     var update = GetParticipantFromQuiz(question.id);
                     update.isShowedAnswer = true;
                     answer.isShowedAnswer = true;
                     GenerateControl(question, true);
                     GenerateAnswer(question);
                     btnNext.Enabled = true;
+                    btnPreviouc.Enabled = isPrevious;
                 }
+
+                if (isPaused && axWindowsMediaPlayer1.playState == WMPPlayState.wmppsPaused)
+                    axWindowsMediaPlayer1.Ctlcontrols.play();
+
             }
 
             //btnNext.Enabled = true;
@@ -883,6 +875,17 @@ namespace Rencata.Quiz.Programme
             //{
             //    MessageBox.Show("Please select the correct answer.", "Choose the answer");
             //}
+        }
+        private void CongratsMusic(string music)
+        {
+            if (!string.IsNullOrWhiteSpace(music))
+            {
+                axWindowsMediaPlayer2.settings.volume = 50;
+                axWindowsMediaPlayer2.URL = music;
+                axWindowsMediaPlayer2.settings.autoStart = true;
+                axWindowsMediaPlayer2.Ctlcontrols.play();
+            }
+
         }
         public int GetId(int id)
         {

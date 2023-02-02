@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -67,15 +68,14 @@ namespace Rencata.Quiz.Programme
             {
                 Application.Exit();
             }
-            //tabControl1.Visible = false;
-            
+            btnRemove.Enabled = false;
             btnStartTest.Enabled = false;
-            //participants = new Participants() { Members = new List<string>() };
             if (lstParticipants == null)
                 lstParticipants = new List<Participants>();
             quizConfiguration = new QuizConfiguration();
             LoadConfigData();
             cbNoofParticipant.SelectedIndex = 0;
+
             if (isPastQuiz)
             {
                 string configFileName = String.Format("{0}/{1}/{2}", Application.StartupPath, "quiz", saveFileName);
@@ -88,6 +88,16 @@ namespace Rencata.Quiz.Programme
                     TotalRound = quizConfiguration.TotalRound == 0 ? 0 : quizConfiguration.TotalRound - 1;
                     EachRQuestion = quizConfiguration.QuestioninEachRound == 0 ? 0 : quizConfiguration.QuestioninEachRound - 1;
 
+                    textBox2.Text = quizConfiguration.Timer == 0 ? "5" : Convert.ToString(quizConfiguration.Timer);
+                    if(quizConfiguration.BackgroundMusic != null && quizConfiguration.BackgroundMusic.Count > 0)
+                    {
+                        foreach (var music in quizConfiguration.BackgroundMusic)
+                        {
+                            listView1.Items.Add(music);
+                        }
+                    }
+                    
+
                     cbNoofParticipant.SelectedIndex = TotalParticipants;
                 }
 
@@ -98,30 +108,13 @@ namespace Rencata.Quiz.Programme
                     {
                         GenerateParticipant(item.Name, ++pIndex);
                     }
+                    DisableAllControl();
                 }
                
             }
         }
         async Task SaveConfigurationAsync()
         {
-            //int pIndex = 0;
-            //foreach (var participant in quizDetail)
-            //{
-            //    var part = lstParticipant.Where(x => x.Id == participant.Id).FirstOrDefault();
-
-            //    if (part.Answer == null)
-            //        part.Answer = new List<Answer>();
-
-            //    Answer answer = new Answer() 
-            //    { 
-            //        QuestionId= participant.Id,
-            //        Answered =  participant.answeredbyparticipant,
-            //        isCorrect = participant.checkAnswer.HasValue ? participant.checkAnswer.Value : false
-            //    };
-            //    part.Answer.Add(answer);
-
-            //    pIndex++;
-            //}
             string json = JsonConvert.SerializeObject(quizConfiguration);
             string directory = Path.Combine(Application.StartupPath, saveFolderName);
             string filePath = Path.Combine(directory, saveFileName);
@@ -137,7 +130,6 @@ namespace Rencata.Quiz.Programme
         private async void btnStartTest_Click(object sender, EventArgs e)
         {
             if (lstParticipants == null || lstParticipants.Count <= 0)
-            //if (participants == null || participants.Members?.Count <= 0)
             {
                 MessageBox.Show("Please add atleast one participant.", "Add Participant");
             }
@@ -146,15 +138,21 @@ namespace Rencata.Quiz.Programme
                 DialogResult result = MessageBox.Show("Do you like to proceed the quiz?", "Start Test", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    quizConfiguration.Timer = !string.IsNullOrWhiteSpace(textBox2.Text) ? Convert.ToInt32(textBox2.Text) : 0 ;
+                    if (quizConfiguration.BackgroundMusic == null)
+                        quizConfiguration.BackgroundMusic = new List<string>();
+                    quizConfiguration.BackgroundMusic.Clear();
+                    foreach (ListViewItem item in listView1.Items)
+                    {
+                        quizConfiguration.BackgroundMusic.Add(item.Text);
+                    }
                     await SaveConfigurationAsync();
-                    //lstParticipants pass
                     StartTestDataEventArgs args = new StartTestDataEventArgs(fileName, lstParticipants, quizConfiguration, isApplicationExit);
                     StartTestData?.Invoke(this, args);
                     isClosing = true;
                     this.Close();
                 }
             }
-            
         }
         private void OpenFileUploadForm()
         {
@@ -207,24 +205,6 @@ namespace Rencata.Quiz.Programme
             }
             return false;
         }
-
-        //private void btnAddParticipant_Click(object sender, EventArgs e)
-        //{
-        //    if (!string.IsNullOrWhiteSpace(textBox1.Text))
-        //    {
-        //        participant = textBox1.Text.Trim();
-        //        participants.Members.Add(participant);
-        //        int index = participants.Members.FindIndex(a => a == participant);
-        //        GenerateParticipant(participant, index);
-        //        textBox1.Text = "";
-        //        textBox1.Focus();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Please enter valid participant.");
-        //    }
-        //}
-
         private void GenerateParticipant(string participant, int index)
         {
             FlowLayoutPanel fPanel = new FlowLayoutPanel();
@@ -240,23 +220,11 @@ namespace Rencata.Quiz.Programme
                     label => label.Name = "Member_" + index,
                     label => label.AutoSize = false,
                     label => label.Size = new Size(250, 30),
-                    //label => label.ForeColor = Color.FromArgb(237, 245, 253),
                     label => label.Padding = new Padding(0, 10, 0, 0),
                     label => label.Location = new Point(100, 20),
                     label => label.Font = new Font("Lucida san", 10, FontStyle.Bold));
             PictureBox pictureBox = GeneratePictureBox(index, 25, "delete");
             pictureBox.Click += new EventHandler(removeParticipant);
-
-            //var pictureBox = CreateControl<PictureBox>(
-            //        pb => pb.Image = global::Rencata.QuizQuestion.Programme.Properties.Resources.icons8_trash_25,
-            //        pb => pb.Name = "PictureBox_" + index,
-            //        pb => pb.AutoSize = false,
-            //        pb => pb.Size = new Size(25, 25),
-            //        pb => pb.Padding = new Padding(5, 5, 5, 5),
-            //        //label => label.ForeColor = Color.FromArgb(237, 245, 253),
-            //        pb => pb.Location = new Point(100, 20),
-            //        pb => pb.Click += new EventHandler(removeParticipant));
-
 
             fPanel.Controls.Add(peopleIconBox);
             fPanel.Controls.Add(labelMember);
@@ -468,6 +436,96 @@ namespace Rencata.Quiz.Programme
             for(int i =0;i< 10; i++)
             {
                 cbNoofParticipant.Items.Add(i + 1);
+            }
+        }
+
+        private void btnBrowseMusic_Click(object sender, EventArgs e)
+        {
+            quizConfiguration.BackgroundMusic = new List<string>();
+            OpenFileDialog openFileDialog2 = new OpenFileDialog();
+            openFileDialog2.Filter = "Music (.mp3)|*.mp3";
+            openFileDialog2.Title = "Select file";
+            openFileDialog2.Multiselect = true;
+            DialogResult result = openFileDialog2.ShowDialog();
+            if (result == DialogResult.OK) // Test result.
+            {
+
+                foreach(var music in openFileDialog2.FileNames)
+                {
+                    ListViewItem item = new ListViewItem(music);
+                    listView1.Items.Add(item);
+                }
+            }
+        }
+
+        private void btnShowAnswerMusic_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog2 = new OpenFileDialog();
+            openFileDialog2.Filter = "Music (.wav)|*.wav";
+            openFileDialog2.Title = "Select file";
+            openFileDialog2.Multiselect = false;
+            DialogResult result = openFileDialog2.ShowDialog();
+            if (result == DialogResult.OK) // Test result.
+            {
+                  quizConfiguration.ShowAnswerMusic = openFileDialog2.FileName;
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                foreach (ListViewItem listviewitem in listView1.SelectedItems)
+                {
+                    listView1.Items.Remove(listviewitem);
+                }
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView1.SelectedIndices.Count <= 0)
+            {
+                btnRemove.Enabled= false;
+                return;
+            }
+            else
+            {
+                btnRemove.Enabled= true;
+            }
+            //int intselectedindex = listView1.SelectedIndices[0];
+            //if (intselectedindex >= 0)
+            //{
+            //    String text = listView1.Items[intselectedindex].Text;
+
+            //    //do something
+            //    //MessageBox.Show(listView1.Items[intselectedindex].Text); 
+            //}
+        }
+
+        private void DisableAllControl()
+        {
+            cbNoofParticipant.Enabled= false;   
+            cbRounds.Enabled= false;
+            cbEachRoundQ.Enabled = false;
+            textBox1.Enabled= false;
+            btnAddParticipant.Enabled= false;
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(Char.IsNumber(e.KeyChar) || e.KeyChar == 8);
+            if (e.Handled)
+            {
+                if (!string.IsNullOrWhiteSpace(textBox1.Text))
+                {
+                    int second = Convert.ToInt32(textBox2.Text);
+                    if(second > 60)
+                    {
+                        //MessageBox.Show("please");
+                    }
+                }
+                
             }
         }
     }

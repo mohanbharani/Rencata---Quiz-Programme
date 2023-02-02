@@ -15,6 +15,7 @@ namespace Rencata.Quiz.Programme
         public string Question { get; set; }
         public string Type { get; set; }
         public List<Options> Options { get; set; }
+        public bool Answered { get; set; }
     }
 
     public class Options
@@ -28,9 +29,6 @@ namespace Rencata.Quiz.Programme
         public int Id { get; set; }
         public int QuestionId { get; set; }
         public bool isShowedAnswer { get; set; }
-        public int cRound { get; set; }
-        public int cQuestion { get; set; }
-        public int cParticipant { get; set; }
     }
     public class QuizStorage
     {
@@ -60,5 +58,8 @@ namespace Rencata.Quiz.Programme
         public int TotalRound { get; set; }
         public int TotalParticipant { get; set; }
         public int QuestioninEachRound { get; set; }
+        public int Timer { get; set; }
+        public List<string> BackgroundMusic { get; set; }
+        public string ShowAnswerMusic { get; set; }
     }
 }
