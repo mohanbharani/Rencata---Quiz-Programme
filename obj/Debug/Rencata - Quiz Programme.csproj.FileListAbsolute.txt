@@ -33,3 +33,38 @@ C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\WinF
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\bin\Debug\CircularProgressBar.xml
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.StartTest.resources
 C:\Users\Bharanikumar.Eswar\Source\repos\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.FinalScore.resources
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.AssemblyReference.cache
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.SuggestedBindingRedirects.cache
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Interop.MediaPlayer.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Interop.WMPLib.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.ResolveComReference.cache
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.exe
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.pdb
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\Rencata - Quiz Programme.exe.config
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\Rencata - Quiz Programme.exe
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\Rencata - Quiz Programme.pdb
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\CircularProgressBar.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\System.Security.AccessControl.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\System.Security.Permissions.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\WinFormAnimation.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\CircularProgressBar.xml
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\System.Security.AccessControl.xml
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\System.Security.Permissions.xml
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\Interop.WMPLib.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.MemberControl.resources
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.Properties.Resources.resources
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.GenerateResource.cache
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.CoreCompileInputs.cache
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata - Quiz Programme.csproj.CopyComplete
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.FileUpload.resources
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.FinalScore.resources
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.Form1.resources
+C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\obj\Debug\Rencata.Quiz.Programme.StartTest.resources

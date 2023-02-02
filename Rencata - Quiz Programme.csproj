@@ -113,6 +113,9 @@
     <Compile Include="StartTest.Designer.cs">
       <DependentUpon>StartTest.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FileUpload.resx">
+      <DependentUpon>FileUpload.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FinalScore.resx">
       <DependentUpon>FinalScore.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,9 +129,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FileUpload.resx">
-      <DependentUpon>FileUpload.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartTest.resx">
       <DependentUpon>StartTest.cs</DependentUpon>
@@ -259,6 +259,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-sound-speaker-25 %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

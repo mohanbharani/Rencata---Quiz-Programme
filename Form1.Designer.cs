@@ -47,9 +47,9 @@
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblRounds = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.lblChoseAnswer = new System.Windows.Forms.Label();
+            this.lblRounds = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPreviouc = new System.Windows.Forms.Button();
@@ -284,19 +284,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1277, 757);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
-            // lblRounds
-            // 
-            this.lblRounds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRounds.AutoSize = true;
-            this.lblRounds.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRounds.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblRounds.Location = new System.Drawing.Point(348, 80);
-            this.lblRounds.Name = "lblRounds";
-            this.lblRounds.Padding = new System.Windows.Forms.Padding(5);
-            this.lblRounds.Size = new System.Drawing.Size(104, 34);
-            this.lblRounds.TabIndex = 2;
-            this.lblRounds.Text = "Rounds: ";
-            // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(236)))), ((int)(((byte)(250)))));
@@ -322,6 +309,19 @@
             this.lblChoseAnswer.Size = new System.Drawing.Size(202, 24);
             this.lblChoseAnswer.TabIndex = 1;
             this.lblChoseAnswer.Text = "Choose the answer :";
+            // 
+            // lblRounds
+            // 
+            this.lblRounds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRounds.AutoSize = true;
+            this.lblRounds.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRounds.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblRounds.Location = new System.Drawing.Point(348, 80);
+            this.lblRounds.Name = "lblRounds";
+            this.lblRounds.Padding = new System.Windows.Forms.Padding(5);
+            this.lblRounds.Size = new System.Drawing.Size(104, 34);
+            this.lblRounds.TabIndex = 2;
+            this.lblRounds.Text = "Rounds: ";
             // 
             // panel5
             // 
