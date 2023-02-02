@@ -82,7 +82,7 @@ namespace Rencata.Quiz.Programme
                 if (File.Exists(configFileName))
                 {
                     
-                    var quizFile = System.IO.File.ReadAllText(String.Format("{0}/{1}/{2}", Application.StartupPath, "quiz", saveFileName));
+                    var quizFile = System.IO.File.ReadAllText(configFileName);
                     quizConfiguration = JsonConvert.DeserializeObject<QuizConfiguration>(quizFile);
                     TotalParticipants = quizConfiguration.TotalParticipant == 0 ? 0 : quizConfiguration.TotalParticipant - 1;
                     TotalRound = quizConfiguration.TotalRound == 0 ? 0 : quizConfiguration.TotalRound - 1;
@@ -244,6 +244,7 @@ namespace Rencata.Quiz.Programme
                                 pb => pb.Image = bitMap,
                                 pb => pb.Name = "PeopeIconBox_" + index,
                                 pb => pb.AutoSize = false,
+                                pb => pb.Enabled = !isPastQuiz,
                                 pb => pb.Size = new Size(size, size),
                                 //label => label.ForeColor = Color.FromArgb(237, 245, 253),
                                 pb => pb.Location = new Point(100, 20));
