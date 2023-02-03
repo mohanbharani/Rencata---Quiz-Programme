@@ -263,7 +263,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <Content Include="short-crowd-cheer-2-88701.mp3" />
     <None Include="Resources\MicrosoftTeams-image %288%29.png" />
+    <Content Include="moreclaps-104533.mp3" />
+    <Content Include="negative_beeps-6008.mp3" />
     <Content Include="Resources\short-crowd-cheer-2-88701.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
