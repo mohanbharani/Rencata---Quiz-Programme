@@ -145,6 +145,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="ModalQuestion.json" />
+    <None Include="Techathon.zip" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
