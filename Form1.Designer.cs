@@ -329,7 +329,7 @@
             this.lblRounds.AutoSize = true;
             this.lblRounds.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRounds.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblRounds.Location = new System.Drawing.Point(348, 80);
+            this.lblRounds.Location = new System.Drawing.Point(1369, 80);
             this.lblRounds.Name = "lblRounds";
             this.lblRounds.Padding = new System.Windows.Forms.Padding(5);
             this.lblRounds.Size = new System.Drawing.Size(104, 34);
