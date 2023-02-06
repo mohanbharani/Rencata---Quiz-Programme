@@ -30,6 +30,7 @@ namespace Rencata.Quiz.Programme
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuizProgramme));
             this.Back = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
@@ -352,6 +353,51 @@ namespace Rencata.Quiz.Programme
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
+            // timerProgressBar
+            // 
+            this.timerProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.timerProgressBar.AnimationSpeed = 500;
+            this.timerProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.timerProgressBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.timerProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.timerProgressBar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(96)))), ((int)(((byte)(189)))));
+            this.timerProgressBar.InnerMargin = 2;
+            this.timerProgressBar.InnerWidth = -1;
+            this.timerProgressBar.Location = new System.Drawing.Point(889, 4);
+            this.timerProgressBar.MarqueeAnimationSpeed = 20000;
+            this.timerProgressBar.Name = "timerProgressBar";
+            this.timerProgressBar.OuterColor = System.Drawing.Color.Transparent;
+            this.timerProgressBar.OuterMargin = 0;
+            this.timerProgressBar.OuterWidth = 1;
+            this.timerProgressBar.ProgressColor = System.Drawing.Color.Navy;
+            this.timerProgressBar.ProgressWidth = 8;
+            this.timerProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.timerProgressBar.Size = new System.Drawing.Size(65, 60);
+            this.timerProgressBar.StartAngle = 270;
+            this.timerProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.timerProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.timerProgressBar.SubscriptText = "";
+            this.timerProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.timerProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.timerProgressBar.SuperscriptText = "";
+            this.timerProgressBar.TabIndex = 38;
+            this.timerProgressBar.TextMargin = new System.Windows.Forms.Padding(2, 3, 2, 0);
+            this.timerProgressBar.Value = 68;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(57, 7);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(243, 48);
+            this.axWindowsMediaPlayer1.TabIndex = 31;
+            this.axWindowsMediaPlayer1.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
             // 
             // QuizProgramme
             // 
