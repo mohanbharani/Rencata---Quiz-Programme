@@ -20,6 +20,7 @@ using Label = System.Windows.Forms.Label;
 using System.Media;
 using AxWMPLib;
 using WMPLib;
+using System.Configuration;
 
 namespace Rencata.Quiz.Programme
 {
@@ -33,6 +34,8 @@ namespace Rencata.Quiz.Programme
         private int backCount = 0;
         private bool isback = false;
         private int questionID = 0;
+        private int secondsToWait = Convert.ToInt32(ConfigurationManager.AppSettings["secondsToWait"]);
+        private DateTime startTime;
 
         private List<Question> AssignedQuest = new List<Question>();
         public QuizProgramme()
@@ -53,8 +56,8 @@ namespace Rencata.Quiz.Programme
                 Test();
                 axWindowsMediaPlayer1.Visible = false;
                 panel1.Visible = false;
-                string Json = System.IO.File.ReadAllText(@"c:\Users\Bharanikumar.Eswar\qamodel.json");
-                string team = System.IO.File.ReadAllText(@"c:\Users\Bharanikumar.Eswar\Teamandmember.json");
+                string Json = System.IO.File.ReadAllText(@"C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\asssets\qamodel.json");
+                string team = System.IO.File.ReadAllText(@"C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\asssets\Teamandmember.json");
                 quiz = JsonConvert.DeserializeObject<Quiz>(Json);
                 teamsandMembers = JsonConvert.DeserializeObject<List<Teams>>(team);
                 axWindowsMediaPlayer1.settings.autoStart = true;
@@ -90,7 +93,12 @@ namespace Rencata.Quiz.Programme
         }
         private void btnNext_Click(object sender, EventArgs e)
         {
+            nextQuestion();
 
+
+        }
+        private void nextQuestion()
+        {
             if (isback && backCount != 0)
             {
                 label2.Text = backCount.ToString();
@@ -132,6 +140,7 @@ namespace Rencata.Quiz.Programme
                         GenerateControl(question);
                         question.id = ++questionID;
                         askedQuestions.Add(question);
+                        Timer_Start();
                     }
                     else
                     {
@@ -532,7 +541,9 @@ namespace Rencata.Quiz.Programme
         private void btnPlay_Click(object sender, EventArgs e)
         {
             axWindowsMediaPlayer1.Visible = false;
-            axWindowsMediaPlayer1.URL = @"C:\\Users\\Bharanikumar.Eswar\\watr-fluid-10149.mp3";
+
+            //axWindowsMediaPlayer1.URL = @"C:\Windows\Media\alaram05.wav";
+            axWindowsMediaPlayer1.URL = @"C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\asssets\watr-fluid-10149.mp3";
             axWindowsMediaPlayer1.settings.setMode("loop", true);
             axWindowsMediaPlayer1.Ctlcontrols.play();
             btnPlay.Enabled = false;
@@ -564,6 +575,49 @@ namespace Rencata.Quiz.Programme
             btnPause.Enabled = false;
             btnResume.Enabled = true;
             axWindowsMediaPlayer1.Ctlcontrols.pause();
+        }
+        #region Timer
+
+        private void Timer_Start()
+        {
+            timer1.Interval = 1000;//1s
+            timer1.Enabled = true;
+            timer1.Tick += new EventHandler(timer1_Tick);
+            startTime = DateTime.Now;
+            timerProgressBar.Maximum = secondsToWait;
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int elapsedSeconds = (int)(DateTime.Now - startTime).TotalSeconds;
+            int remainingSeconds = secondsToWait - elapsedSeconds;
+
+            if (remainingSeconds >= 0)
+            {
+                timerProgressBar.Text = Convert.ToString(remainingSeconds);
+                timerProgressBar.Value = remainingSeconds;
+                
+                if (remainingSeconds == 0)
+                {
+                    timer1.Enabled = false;
+                    nextQuestion();
+                }
+            }
+
+        private void axWindowsMediaPlayer2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            pictureBox2.Enabled  = false;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.URL = @"C:\Users\bharani.kumar\Repo\Rencata - Quiz Programme\Rencata - Quiz Programme\asssets\watr-fluid-10149.mp3";
+            axWindowsMediaPlayer1.settings.setMode("loop", true);
+            axWindowsMediaPlayer1.Ctlcontrols.play();
         }
 
 

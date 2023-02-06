@@ -16,7 +16,7 @@ namespace Rencata.Quiz.Programme
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QuizProgramme());
+            Application.Run(new Form1());
         }
     }
 }

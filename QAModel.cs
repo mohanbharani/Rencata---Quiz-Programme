@@ -9,39 +9,57 @@ using System.Windows.Forms;
 
 namespace Rencata.Quiz.Programme
 {
-    public class Question
+    public class QuizQuestion
     {
-        public string text { get; set; }
-        public List<string> answer { get; set; }
-        public bool multiselect { get; set; }
-        public string category { get; set; }
-        public List<string> Options { get; set; }
-        public bool asked { get; set; }
-        public bool answered { get; set; }
-        public List<string> answeredbyuser { get; set; } = new List<string>();
-        public string teamname { get; set; }
-        public int id { get; set; } = 0;
-        public bool ischeckedanswer { get; set; }
-        public List<string> musicpath { get; set; }
+        public int id { get; set; }
+        public string Question { get; set; }
+        public string Type { get; set; }
+        public List<Options> Options { get; set; }
+        public bool Answered { get; set; }
     }
 
-    public class User
+    public class Options
+    {
+        public string Option { get; set; }
+        public bool IsAnswer { get; set; } = false;
+    }
+
+    public class QuizDetails
+    {
+        public int Id { get; set; }
+        public int QuestionId { get; set; }
+        public bool isShowedAnswer { get; set; }
+    }
+    public class QuizStorage
+    {
+        public bool QuizSubmitted { get; set; }
+        public List<QuizDetails> participant { get; set; }
+    }
+    public class QuizQuestions
+    {
+        public List<QuizQuestion> Questions { get; set; }
+    }
+    public class Participants
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int OverallScore { get; set; }
+        public List<Answer> Answer { get; set; }
+    }
+    public class Answer
     {
         public int QuestionId { get; set; }
-        public bool asked { get; set; }
-        public bool answered { get; set; }
-        public List<string> answeredbyuser { get; set; } = new List<string>();
-        public string teamname { get; set; }
-        
+        public List<string> Answered { get; set; }
+        public bool isCorrect { get; set; }
+        public bool isShowedAnswer { get; set; }
     }
-    public class Quiz
+    public class QuizConfiguration
     {
-        public string Name { get; set; }
-        public List<Question> Questions { get; set; }
-    }
-    public class Teams
-    {
-        public string TeamName { get; set; }
-        public List<string> Members { get; set; }
+        public int TotalRound { get; set; }
+        public int TotalParticipant { get; set; }
+        public int QuestioninEachRound { get; set; }
+        public int Timer { get; set; }
+        public List<string> BackgroundMusic { get; set; }
+        public string ShowAnswerMusic { get; set; }
     }
 }
