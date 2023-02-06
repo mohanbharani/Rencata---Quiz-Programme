@@ -37,6 +37,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.axWindowsMediaPlayer2 = new AxWMPLib.AxWindowsMediaPlayer();
             this.label2 = new System.Windows.Forms.Label();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.btnMute = new System.Windows.Forms.Button();
@@ -65,6 +66,7 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -132,6 +134,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(98)))), ((int)(((byte)(150)))));
+            this.panel2.Controls.Add(this.axWindowsMediaPlayer2);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.axWindowsMediaPlayer1);
             this.panel2.Controls.Add(this.btnMute);
@@ -146,6 +149,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1292, 79);
             this.panel2.TabIndex = 2;
+            // 
+            // axWindowsMediaPlayer2
+            // 
+            this.axWindowsMediaPlayer2.Enabled = true;
+            this.axWindowsMediaPlayer2.Location = new System.Drawing.Point(84, -2);
+            this.axWindowsMediaPlayer2.Name = "axWindowsMediaPlayer2";
+            this.axWindowsMediaPlayer2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer2.OcxState")));
+            this.axWindowsMediaPlayer2.Size = new System.Drawing.Size(75, 23);
+            this.axWindowsMediaPlayer2.TabIndex = 13;
+            this.axWindowsMediaPlayer2.Visible = false;
             // 
             // label2
             // 
@@ -316,7 +329,7 @@
             this.lblRounds.AutoSize = true;
             this.lblRounds.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRounds.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblRounds.Location = new System.Drawing.Point(348, 80);
+            this.lblRounds.Location = new System.Drawing.Point(1369, 80);
             this.lblRounds.Name = "lblRounds";
             this.lblRounds.Padding = new System.Windows.Forms.Padding(5);
             this.lblRounds.Size = new System.Drawing.Size(104, 34);
@@ -476,6 +489,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -517,5 +531,6 @@
         private System.Windows.Forms.Button btnMute;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEndQuiz;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer2;
     }
 }

@@ -34,12 +34,6 @@ namespace Rencata.Quiz.Programme
             InitializeComponent();
             this.Text = !string.IsNullOrWhiteSpace(formTitle) ? formTitle : "Select file";
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-
-        }
         private bool ValidateJson(string fileName)
         {
             string jsonString = File.ReadAllText(fileName);
@@ -59,11 +53,10 @@ namespace Rencata.Quiz.Programme
         }
         private void FileUpload_Load(object sender, EventArgs e)
         {
+            btnBrowse.Focus();
             //RetrieveSavedData();
             btnNext.Enabled = false;
         }
-
-
         private void FileUpload_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (isClosing)
@@ -75,8 +68,6 @@ namespace Rencata.Quiz.Programme
                 isClosing = true;
                 FileUploadDataEventArgs args = new FileUploadDataEventArgs(lstParticipation, filePath, isPastQuizS, isClosing);
                 FileUploadData(this, args);
-                //Application.Exit();
-                // Perform action if user clicks "Yes"
             }
             else if (result == DialogResult.No)
             {
@@ -105,21 +96,26 @@ namespace Rencata.Quiz.Programme
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
+            BrowseQuestionFile();
+        }
+
+        private void BrowseQuestionFile()
+        {
             OpenFileDialog openFileDialog2 = new OpenFileDialog();
             openFileDialog2.Filter = "JSON Files (*.json)|*.json";
             openFileDialog2.Title = "Select file";
             openFileDialog2.Multiselect = fileMultiSelect;
             DialogResult result = openFileDialog2.ShowDialog();
-            if (result == DialogResult.OK) // Test result.
+            if (result == DialogResult.OK)
             {
                 if (ValidateJson(openFileDialog2.FileName))
                 {
                     richTextBox1.Text = openFileDialog2.FileName;
                     btnNext.Enabled = true;
-                    //this.Close();
                 }
             }
         }
+
         public class FileUploadDataEventArgs : EventArgs
         {
             public string Data { get; set; }
@@ -147,7 +143,7 @@ namespace Rencata.Quiz.Programme
                 richTextBox2.Text = filePath;
                 if (File.Exists(filePath))
                 {
-                    var quizFile = System.IO.File.ReadAllText(String.Format("{0}/{1}/{2}", Application.StartupPath, "quiz", "quizData.json"));
+                    var quizFile = System.IO.File.ReadAllText(filePath);
                     lstParticipation = JsonConvert.DeserializeObject<List<Participants>>(quizFile);
                 }
             }

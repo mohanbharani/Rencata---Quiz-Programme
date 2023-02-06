@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +16,7 @@ namespace Rencata.Quiz.Programme
     public partial class FinalScore : Form
     {
         public string Score { get; set; }
+        private string ResultPageMusic = ConfigurationManager.AppSettings["ResultPageMusic"];
         public List<Participants> Participants
         {
             get;set;
@@ -24,17 +28,38 @@ namespace Rencata.Quiz.Programme
 
         private void FinalScore_Load(object sender, EventArgs e)
         {
-            //label1.Text = Score;
+            GetFinalScore();
             int index = 0;
-            List<int> randomNumbers = Enumerable.Range(1, 100).OrderBy(x => Guid.NewGuid()).ToList();
-
-            // For ascending order
-            randomNumbers.Sort();
+            
             var result = Participants.OrderByDescending(item => item.OverallScore).ToList();
-            for (int i =0;i< result.Count; i++)
+            for (int i = 0; i < result.Count; i++)
             {
                 string str = string.Format("{0}/{1}", result[i].Answer.Where(a => a.isCorrect).ToList().Count, result[i].Answer.Count);
-                GenerateResult(String.Format("{0}  ({1})", result[i].Name, str), Convert.ToString( i +1), result[i].OverallScore);
+                GenerateResult(String.Format("{0}  ({1})", result[i].Name, str), Convert.ToString(i + 1), result[i].OverallScore);
+            }
+            PlayMusic();
+        }
+
+        private void PlayMusic()
+        {
+            if (!string.IsNullOrWhiteSpace(ResultPageMusic))
+            {
+                axWindowsMediaPlayer1.settings.volume = 50;
+                axWindowsMediaPlayer1.URL = ResultPageMusic;
+                axWindowsMediaPlayer1.settings.autoStart = true;
+                axWindowsMediaPlayer1.Ctlcontrols.play();
+            }
+        }
+
+        private void GetFinalScore()
+        {
+            var quizFile = System.IO.File.ReadAllText(String.Format("{0}/{1}/{2}", Application.StartupPath, "quiz", "quizData.json"));
+            Participants = JsonConvert.DeserializeObject<List<Participants>>(quizFile);
+
+            foreach (var score in Participants)
+            {
+                if (score.Answer != null && score.Answer.Count > 0)
+                    score.OverallScore = score.Answer.Where(x => x.isCorrect == true).Count();
             }
         }
 
@@ -47,8 +72,6 @@ namespace Rencata.Quiz.Programme
         {
             Application.Exit();
         }
-
-
         private void GenerateResult(string participantName, string index, int score)
         {
             FlowLayoutPanel fPanel = new FlowLayoutPanel();
@@ -97,6 +120,54 @@ namespace Rencata.Quiz.Programme
             form.ShowDialog();
             this.Close();
             Application.Exit();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = @"C:\";
+            saveFileDialog1.Title = "Save Final Result";
+            saveFileDialog1.DefaultExt = "txt";
+            saveFileDialog1.Filter = "CSV files (*.csv)|*.csv";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ExportToCSV(saveFileDialog1.FileName);
+            }
+
+
+        }
+
+        public void ExportToCSV(string fileName)
+        {
+            var lines = new List<string>();
+            var result = Participants.OrderByDescending(item => item.OverallScore).ToList();
+            string[] columnNames = new string[] { "S.No", "Name", "Correct Answers", "Total Question", "Score" };
+            var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
+            lines.Add(header);
+
+            string row = "";
+            int index = 0;
+            foreach (var score in result)
+            {
+
+                if (score.Answer != null && score.Answer.Count > 0)
+                {
+                    var cntAnswer = score.Answer.Where(x => x.isCorrect == true).ToList().Count;
+                    row = string.Format("{0},{1},{2},{3},{4}", ++index, score.Name, cntAnswer, score.Answer.Count, cntAnswer);
+                    //      var valueLines = string.Join("{0},", row.ItemArray.Select(val => $"\"{val}\""));
+                }
+                else
+                {
+                    score.OverallScore = score.Answer.Where(x => x.isCorrect == true).Count();
+                    row = string.Format("{0},{1},{2},{3},{4}", ++index, score.Name, 0, 0, 0);
+                }
+                lines.Add(row);
+            }
+
+            File.WriteAllLines(string.Format("{0}", fileName), lines);
+
         }
     }
 }

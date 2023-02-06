@@ -53,6 +53,20 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnAddParticipant = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnBrowseMusic = new System.Windows.Forms.Button();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.btnShowAnswerMusic = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,6 +74,8 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -170,6 +186,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(343, 88);
             this.tabControl1.Name = "tabControl1";
@@ -350,6 +367,171 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Add Participant\'s Name : ";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(236)))), ((int)(((byte)(250)))));
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.panel7);
+            this.tabPage3.Controls.Add(this.textBox2);
+            this.tabPage3.Controls.Add(this.label12);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.btnBrowseMusic);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(677, 493);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Settings";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Coral;
+            this.label11.Location = new System.Drawing.Point(249, 95);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(162, 12);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Please enter numbers only";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.btnRemove);
+            this.panel7.Controls.Add(this.listView1);
+            this.panel7.Location = new System.Drawing.Point(249, 182);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(348, 229);
+            this.panel7.TabIndex = 21;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(98)))), ((int)(((byte)(150)))));
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRemove.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.ForeColor = System.Drawing.Color.White;
+            this.btnRemove.Location = new System.Drawing.Point(0, 206);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(192, 25);
+            this.btnRemove.TabIndex = 23;
+            this.btnRemove.Text = "Remove Selected Item";
+            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.LabelWrap = false;
+            this.listView1.Location = new System.Drawing.Point(4, 4);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(341, 196);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(249, 65);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 23);
+            this.textBox2.TabIndex = 20;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(247, 156);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(189, 12);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "please select only mp3 format";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(98)))), ((int)(((byte)(150)))));
+            this.label10.Location = new System.Drawing.Point(75, 73);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 15);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Timer :";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(98)))), ((int)(((byte)(150)))));
+            this.label8.Location = new System.Drawing.Point(75, 129);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(143, 15);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Back-ground music :";
+            // 
+            // btnBrowseMusic
+            // 
+            this.btnBrowseMusic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(98)))), ((int)(((byte)(150)))));
+            this.btnBrowseMusic.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBrowseMusic.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowseMusic.ForeColor = System.Drawing.Color.White;
+            this.btnBrowseMusic.Location = new System.Drawing.Point(249, 118);
+            this.btnBrowseMusic.Name = "btnBrowseMusic";
+            this.btnBrowseMusic.Size = new System.Drawing.Size(84, 35);
+            this.btnBrowseMusic.TabIndex = 11;
+            this.btnBrowseMusic.Text = "Browse";
+            this.btnBrowseMusic.UseVisualStyleBackColor = false;
+            this.btnBrowseMusic.Click += new System.EventHandler(this.btnBrowseMusic_Click);
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(245)))), ((int)(((byte)(253)))));
+            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(41)))), ((int)(((byte)(67)))));
+            this.richTextBox2.Location = new System.Drawing.Point(533, 611);
+            this.richTextBox2.Multiline = false;
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(250, 35);
+            this.richTextBox2.TabIndex = 12;
+            this.richTextBox2.Text = "";
+            this.richTextBox2.Visible = false;
+            // 
+            // btnShowAnswerMusic
+            // 
+            this.btnShowAnswerMusic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(98)))), ((int)(((byte)(150)))));
+            this.btnShowAnswerMusic.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnShowAnswerMusic.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowAnswerMusic.ForeColor = System.Drawing.Color.White;
+            this.btnShowAnswerMusic.Location = new System.Drawing.Point(799, 611);
+            this.btnShowAnswerMusic.Name = "btnShowAnswerMusic";
+            this.btnShowAnswerMusic.Size = new System.Drawing.Size(84, 35);
+            this.btnShowAnswerMusic.TabIndex = 13;
+            this.btnShowAnswerMusic.Text = "Browse";
+            this.btnShowAnswerMusic.UseVisualStyleBackColor = false;
+            this.btnShowAnswerMusic.Visible = false;
+            this.btnShowAnswerMusic.Click += new System.EventHandler(this.btnShowAnswerMusic_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(98)))), ((int)(((byte)(150)))));
+            this.label9.Location = new System.Drawing.Point(361, 622);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(108, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Show Answer music :";
+            this.label9.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(533, 649);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(244, 12);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "please select .wav format below 5 sec ";
+            this.label13.Visible = false;
+            // 
             // StartTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,9 +541,13 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.btnStartTest);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.btnShowAnswerMusic);
             this.ForeColor = System.Drawing.Color.Coral;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -381,7 +567,11 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -411,5 +601,19 @@
         private System.Windows.Forms.Button btnAddParticipant;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnShowAnswerMusic;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Button btnBrowseMusic;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label label11;
     }
 }
