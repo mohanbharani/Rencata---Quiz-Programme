@@ -1,4 +1,6 @@
-﻿namespace Rencata.Quiz.Programme
+﻿using System.Drawing;
+
+namespace Rencata.Quiz.Programme
 {
     partial class QuizProgramme
     {
@@ -50,19 +52,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.btnPlay = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
             this.btnResume = new System.Windows.Forms.Button();
-            this.btnVolumeDec = new System.Windows.Forms.Button();
-            this.btnVolumneInc = new System.Windows.Forms.Button();
-            this.timerProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnPlay = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Back
@@ -107,7 +110,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(203)))), ((int)(((byte)(255)))));
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Controls.Add(this.richTextBox1);
             this.flowLayoutPanel1.Controls.Add(this.label3);
@@ -119,6 +122,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(96)))), ((int)(((byte)(189)))));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Location = new System.Drawing.Point(3, 3);
             this.richTextBox1.Name = "richTextBox1";
@@ -141,9 +145,9 @@
             // 
             // btnPause
             // 
-            this.btnPause.Location = new System.Drawing.Point(1149, 7);
+            this.btnPause.Location = new System.Drawing.Point(1158, 13);
             this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(75, 23);
+            this.btnPause.Size = new System.Drawing.Size(30, 30);
             this.btnPause.TabIndex = 37;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = true;
@@ -270,69 +274,85 @@
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.AutoScroll = true;
+            this.flowLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 4);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(389, 720);
             this.flowLayoutPanel3.TabIndex = 0;
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(773, 7);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 10;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // btnPlay
-            // 
-            this.btnPlay.Location = new System.Drawing.Point(987, 7);
-            this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(75, 23);
-            this.btnPlay.TabIndex = 32;
-            this.btnPlay.Text = "Play";
-            this.btnPlay.UseVisualStyleBackColor = true;
-            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
-            // 
-            // btnStop
-            // 
-            this.btnStop.Location = new System.Drawing.Point(1068, 7);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
-            this.btnStop.TabIndex = 33;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
             // btnResume
             // 
-            this.btnResume.Location = new System.Drawing.Point(1230, 7);
+            this.btnResume.Location = new System.Drawing.Point(1277, 12);
             this.btnResume.Name = "btnResume";
-            this.btnResume.Size = new System.Drawing.Size(75, 23);
+            this.btnResume.Size = new System.Drawing.Size(30, 30);
             this.btnResume.TabIndex = 34;
             this.btnResume.Text = "Resume";
             this.btnResume.UseVisualStyleBackColor = true;
             this.btnResume.Click += new System.EventHandler(this.btnResume_Click);
             // 
-            // btnVolumeDec
+            // axWindowsMediaPlayer1
             // 
-            this.btnVolumeDec.Location = new System.Drawing.Point(1316, 7);
-            this.btnVolumeDec.Name = "btnVolumeDec";
-            this.btnVolumeDec.Size = new System.Drawing.Size(75, 23);
-            this.btnVolumeDec.TabIndex = 35;
-            this.btnVolumeDec.Text = "dV";
-            this.btnVolumeDec.UseVisualStyleBackColor = true;
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(1796, 69);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(11, 48);
+            this.axWindowsMediaPlayer1.TabIndex = 31;
+            this.axWindowsMediaPlayer1.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
             // 
-            // btnVolumneInc
+            // pictureBox3
             // 
-            this.btnVolumneInc.Location = new System.Drawing.Point(1430, 12);
-            this.btnVolumneInc.Name = "btnVolumneInc";
-            this.btnVolumneInc.Size = new System.Drawing.Size(75, 23);
-            this.btnVolumneInc.TabIndex = 36;
-            this.btnVolumneInc.Text = "IV";
-            this.btnVolumneInc.UseVisualStyleBackColor = true;
+            this.pictureBox3.Image = global::Rencata.Quiz.Programme.Properties.Resources.icons8_play_32;
+            this.pictureBox3.Location = new System.Drawing.Point(21, 13);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(35, 33);
+            this.pictureBox3.TabIndex = 39;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::Rencata.Quiz.Programme.Properties.Resources.playandpause__1_;
+            this.pictureBox2.Location = new System.Drawing.Point(1377, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(47, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 38;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Rencata.Quiz.Programme.Properties.Resources.playandpause;
+            this.pictureBox1.Location = new System.Drawing.Point(1266, -107);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnStop
+            // 
+            this.btnStop.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnStop.BackgroundImage = global::Rencata.Quiz.Programme.Properties.Resources.output_onlinepngtools;
+            this.btnStop.Image = global::Rencata.Quiz.Programme.Properties.Resources.output_onlinepngtools;
+            this.btnStop.Location = new System.Drawing.Point(1003, 25);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(30, 30);
+            this.btnStop.TabIndex = 33;
+            this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.Image = global::Rencata.Quiz.Programme.Properties.Resources.playandpause;
+            this.btnPlay.Location = new System.Drawing.Point(918, 5);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(30, 30);
+            this.btnPlay.TabIndex = 32;
+            this.btnPlay.Text = "Play";
+            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // timerProgressBar
             // 
@@ -383,17 +403,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(96)))), ((int)(((byte)(189)))));
             this.ClientSize = new System.Drawing.Size(1805, 886);
-            this.Controls.Add(this.timerProgressBar);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnPause);
-            this.Controls.Add(this.btnVolumneInc);
-            this.Controls.Add(this.btnVolumeDec);
             this.Controls.Add(this.btnResume);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblpoint);
             this.Controls.Add(this.lblpointTitlte);
@@ -416,6 +436,9 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,15 +465,13 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnResume;
-        private System.Windows.Forms.Button btnVolumeDec;
-        private System.Windows.Forms.Button btnVolumneInc;
         private System.Windows.Forms.Button btnPause;
-        private CircularProgressBar.CircularProgressBar timerProgressBar;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 
